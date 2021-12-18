@@ -103,6 +103,7 @@ function addTodo() {
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
 
+  // todo list에서 삭제버튼 관련
   span.className = "close";
   span.appendChild(txt);
   span.onclick = function() {
