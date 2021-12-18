@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <title>라이트박스</title>
-    <link rel="stylesheet" href="css/lightbox.css">
-  </head>
-  <body>
-    <div class="row">
-      <ul>
-        <li><img src="images/tree-1-thumb.jpg" data-src="images/tree-1.jpg" class="pic"></li>
-        <li><img src="images/tree-2-thumb.jpg" data-src="images/tree-2.jpg" class="pic"></li>
-        <li><img src="images/tree-3-thumb.jpg" data-src="images/tree-3.jpg" class="pic"></li> 
-        <li><img src="images/tree-4-thumb.jpg" data-src="images/tree-4.jpg" class="pic"></li>
-        <li><img src="images/tree-5-thumb.jpg" data-src="images/tree-5.jpg" class="pic"></li>
-        <li><img src="images/tree-6-thumb.jpg" data-src="images/tree-6.jpg" class="pic"></li>          
-      </ul>    
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>일정관리</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="calendar">
+    <div class="calendar_header">
+      <div class="date_today"></div>
+      <div class="nav">
+        <button class="nav_btn" id="go_prev" onclick="prevMonth()">&lt;</button>
+        <button class="nav_btn" id="go_today" onclick="goToday()">Today</button>
+        <button class="nav_btn" id="go_next" onclick="nextMonth()">&gt;</button>
+      </div>
+    </div>
+    <div class="calendar_main">
+      <div class="days">
+        <div class="day">일</div>
+        <div class="day">월</div>
+        <div class="day">화</div>
+        <div class="day">수</div>
+        <div class="day">목</div>
+        <div class="day">금</div>
+        <div class="day">토</div>
+      </div>
+      <div class="dates"></div>
+    </div>
+  </div>
+
+  <div class="todo_list">
+    <div class="todo_list_header">
+      <div class="todo_list_user"></div>
+    </div>
+    <div class="todo_list_main">
+      <input type="text" id="todo_input" placeholder="할 일을 입력하시오..">
+      <button onclick="addTodo()" class="addBtn">추가</button>
+
+      <ul id="my_list"></ul>
+
     </div>
 
-    <div id="lightbox">
-			<img src="images/tree-1.jpg" alt="" id="lightboxImage">			
-    </div>
+  </div>
+  <script src="index.js"></script>
 
-    <script>
-      var pics = document.getElementsByClassName("pic"); // .pic인 요소들을 가져와 pics 라는 변수에 저장. querySelectorAll(".pic")도 가능
-      var lightbox = document.getElementById("lightbox");  // 라이트 박스. querySelector("#lightbox")도 가능
-      var lightboxImage = document.getElementById("lightboxImage");  // 라이트 박스 안의 이미지. querySelector("#lightboxImage")도 가능
 
-      for (i=0; i<pics.length; i++) {
-        pics[i].addEventListener("click", showLightbox);
-      }
+</body>
 
-      function showLightbox() {
-				var bigLocation = this.getAttribute("data-src"); // bigLocation = this.data-src; 도 가능.
-				lightboxImage.setAttribute("src", bigLocation);  // lightboxImage.src = bigLocation; 도 가능.
-				lightbox.style.display = "block";  // 라이트박스 이미지를 화면에 표시
-      }
-      
-      lightbox.onclick = function() {  //click 이벤트가 발생했을 때 실행할 함수 선언
-				lightbox.style.display = "none";  // lightbox 요소를 화면에서 감춤
-      }
-    </script>
-  </body>
 </html>
